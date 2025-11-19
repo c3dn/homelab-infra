@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   teable:
     image: ghcr.io/teableio/teable:latest
@@ -12,8 +10,26 @@ services:
       # so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/teable/data:/app/.assets:rw
     environment:
+      - TIMEZONE=${TIMEZONE}
       - TZ=${TIMEZONE}
       - NEXT_ENV_IMAGES_ALL_REMOTE=true
+      # Postgres
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      # Redis
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_DB=${REDIS_DB}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      # App
+      - PUBLIC_ORIGIN=${PUBLIC_ORIGIN}
+      - PRISMA_DATABASE_URL=${PRISMA_DATABASE_URL}
+      - PUBLIC_DATABASE_PROXY=${PUBLIC_DATABASE_PROXY}
+      - BACKEND_CACHE_PROVIDER=${BACKEND_CACHE_PROVIDER}
+      - BACKEND_CACHE_REDIS_URI=${BACKEND_CACHE_REDIS_URI}
     networks:
       - teable-standalone
     depends_on:
