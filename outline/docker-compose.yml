@@ -10,6 +10,7 @@ services:
       UTILS_SECRET: ${UTILS_SECRET}
       NODE_ENV: ${NODE_ENV}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      PGSSLMODE: "disable"
     ports:
       - "3000:3000"
     volumes:
