@@ -6,6 +6,8 @@ services:
       REDIS_URL: ${REDIS_URL}
       URL: ${URL}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      SECRET_KEY: ${SECRET_KEY}
+      UTILS_SECRET: ${UTILS_SECRET}
       NODE_ENV: ${NODE_ENV}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
     ports:
