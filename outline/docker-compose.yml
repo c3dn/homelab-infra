@@ -1,6 +1,13 @@
 services:
   outline:
     image: docker.getoutline.com/outlinewiki/outline:latest
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+      URL: ${URL}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      NODE_ENV: ${NODE_ENV}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
     ports:
       - "3000:3000"
     volumes:
@@ -13,6 +20,8 @@ services:
     image: redis
     expose:
       - "6379"
+    environment:
+      REDIS_URL: ${REDIS_URL}
     volumes:
       - ./redis.conf:/redis.conf
     command: ["redis-server", "/redis.conf"]
@@ -34,9 +43,9 @@ services:
       timeout: 20s
       retries: 3
     environment:
-      POSTGRES_USER: 'user'
-      POSTGRES_PASSWORD: 'pass'
-      POSTGRES_DB: 'outline'
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
 
 volumes:
   storage-data:
