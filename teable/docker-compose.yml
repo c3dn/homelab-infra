@@ -5,7 +5,7 @@ services:
     image: ghcr.io/teableio/teable:latest
     restart: always
     ports:
-      - '3000:3000'
+      - '3001:3000'
     volumes:
       - /opt/teable/teable-data:/app/.assets:rw
       # you may use a bind-mounted host directory instead,
