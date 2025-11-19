@@ -6,5 +6,5 @@ services:
     ports:
       - 8090:8090
     volumes:
-      - ./beszel_data:/beszel_data
-      - ./beszel_socket:/beszel_socket
+      - /opt/beszel/beszel_data:/beszel_data
+      - /opt/beszel/beszel_socket:/beszel_socket
