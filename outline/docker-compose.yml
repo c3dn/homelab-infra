@@ -1,6 +1,7 @@
 services:
   outline:
     image: docker.getoutline.com/outlinewiki/outline:latest
+    user: "1000:1000"
     environment:
       DATABASE_URL: ${DATABASE_URL}
       REDIS_URL: ${REDIS_URL}
@@ -38,6 +39,7 @@ services:
     image: postgres
     expose:
       - "5432"
+    user: "1000:1000"
     volumes:
       - /mnt/outline/postgres:/var/lib/postgresql
     healthcheck:
