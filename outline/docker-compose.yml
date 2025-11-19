@@ -8,9 +8,16 @@ services:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       SECRET_KEY: ${SECRET_KEY}
       UTILS_SECRET: ${UTILS_SECRET}
+      # SMTP settings
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL}
       NODE_ENV: ${NODE_ENV}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
       PGSSLMODE: "disable"
+      
     ports:
       - "3000:3000"
     volumes:
