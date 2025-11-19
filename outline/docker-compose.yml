@@ -75,3 +75,4 @@ services:
 volumes:
   storage-data:
   database-data:
+  https-portal-data:
