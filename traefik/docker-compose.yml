@@ -25,9 +25,9 @@ services:
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik.yml:/etc/traefik/traefik.yml:ro
-      - ./ca_certificate.pem:/etc/traefik/ca_certificate.pem:ro
-      - ./acme.json:/etc/traefik/acme.json
+      - /opt/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - /opt/traefik/ca_certificate.pem:/etc/traefik/ca_certificate.pem:ro
+      - /opt/traefik/acme.json:/etc/traefik/acme.json
     networks:
       - traefik
 
