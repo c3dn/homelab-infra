@@ -17,8 +17,6 @@ services:
       - traefik.http.routers.dashboard-http.entrypoints=web
       - traefik.http.routers.dashboard-http.service=api@internal
       - traefik.http.routers.dashboard-http.middlewares=auth
-      # Basic auth credentials
-      - traefik.http.middlewares.auth.basicauth.users=cedric:$apr1$S.SywT5O$lppumcJzYebr4irQHBlsx/
     ports:
       - "80:80"
       - "443:443"
