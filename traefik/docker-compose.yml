@@ -30,6 +30,8 @@ services:
       - /opt/traefik/acme.json:/etc/traefik/acme.json
     networks:
       - traefik
+      - internal
 
 networks:
   traefik:
+  internal:
