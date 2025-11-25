@@ -9,7 +9,7 @@ services:
       - LEGO_CA_CERTIFICATES="/etc/traefik/ca_certificate.pem"
       - TZ="Europe/Berlin"
     labels:
-      - traefik.http.routers.dashboard.rule="Host(‘traefik.local) && (PathPrefix(‘/api’) || PathPrefix(‘/dashboard’))"
+      - traefik.http.routers.dashboard.rule="Host(‘traefik.home) && (PathPrefix(‘/api’) || PathPrefix(‘/dashboard’))"
       - traefik.http.routers.dashboard.service="api@internal"
       - traefik.http.routers.dashboard.middlewares="auth"
       - traefik.http.middlewares.auth.basicauth.users="cedric:$apr1$FOTwjesX$uhGkQ3kKkS8clmfZgpAhx/"
