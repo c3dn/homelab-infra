@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  step-ca:
+    image: smallstep/step-ca
+    container_name: step-ca
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      DOCKER_STEPCA_INIT_NAME: MyAwesomeCA
+      # Set HOST_FQDN in your shell to mimic $(hostname -f); defaults to localhost
+      DOCKER_STEPCA_INIT_DNS_NAMES: "localhost,${HOST_FQDN:-localhost}"
+      DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT: "true"
+      DOCKER_STEPCA_INIT_ACME: "true"
+    volumes:
+      - step:/home/step
+
+volumes:
+  step:
