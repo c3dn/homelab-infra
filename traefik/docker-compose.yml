@@ -8,13 +8,13 @@ services:
       - traefik.enable=true
       # HTTPS dashboard router
       - traefik.http.routers.dashboard-https.rule="Host('traefik.home') && (PathPrefix('/api') || PathPrefix('/dashboard'))"
-      - traefik.http.routers.dashboard-https.entrypoints="websecure"
+      - traefik.http.routers.dashboard-https.entrypoints=websecure
       - traefik.http.routers.dashboard-https.tls=true
       - traefik.http.routers.dashboard-https.service="api@internal"
       - traefik.http.routers.dashboard-https.middlewares="auth"
       # HTTP dashboard router (no TLS)
       - traefik.http.routers.dashboard-http.rule="Host('traefik.home') && (PathPrefix('/api') || PathPrefix('/dashboard'))"
-      - traefik.http.routers.dashboard-http.entrypoints="web"
+      - traefik.http.routers.dashboard-http.entrypoints=web
       - traefik.http.routers.dashboard-http.service="api@internal"
       - traefik.http.routers.dashboard-http.middlewares="auth"
       # Basic auth credentials
