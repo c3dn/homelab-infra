@@ -1,16 +1,11 @@
 services:
   traefik:
     image: traefik:v3.6
-    command:
-      - "--api.insecure=true"
-      - "--api.dashboard=true"
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
     environment:
       - LEGO_CA_CERTIFICATES="/etc/traefik/ca_certificate.pem"
       - TZ="Europe/Berlin"
     labels:
+      - traefik.enable=true
       # HTTPS dashboard router
       - traefik.http.routers.dashboard-https.rule="Host('traefik.home') && (PathPrefix('/api') || PathPrefix('/dashboard'))"
       - traefik.http.routers.dashboard-https.entrypoints="websecure"
@@ -30,8 +25,9 @@ services:
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /opt/traefik/traefik.yml:/etc/traefik/traefik.yml 
-      - /opt/traefik/ca_certificate.pem:/etc/traefik/ca_certificate.pem
+      - ./traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./ca_certificate.pem:/etc/traefik/ca_certificate.pem:ro
+      - ./acme.json:/etc/traefik/acme.json
     networks:
       - traefik
 
