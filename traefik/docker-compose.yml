@@ -16,7 +16,6 @@ services:
       - traefik.http.routers.dashboard-http.rule=Host(`traefik.home`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
       - traefik.http.routers.dashboard-http.entrypoints=web
       - traefik.http.routers.dashboard-http.service=api@internal
-      - traefik.http.routers.dashboard-http.middlewares=auth
     ports:
       - "80:80"
       - "443:443"
